@@ -1,0 +1,8 @@
+if [  $1 = "extend" ]
+then
+    xrandr | grep 'HDMI1 connected' && xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+fi
+if [ $1 = "duplicate" ]
+    then
+        xrandr --output HDMI1 --same-as eDP1
+fi
