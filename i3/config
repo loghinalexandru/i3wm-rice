@@ -2,7 +2,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod4
+set $mod Mod1
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -35,7 +35,9 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 # bindsym $mod+d exec --no-startup-id dmenu_recency
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 500 -columns 1 
+# bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 500 -columns 1 
+bindsym $mod+d exec  rofi -show drun -config /home/loghinalexandru/.config/rofi/config -fulscreen -show-icons
+bindsym $mod+Tab exec  rofi -show window -config /home/loghinalexandru/.config/rofi/config -fulscreen -show-icons
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -143,17 +145,17 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1: 1: 
-set $ws2 2: 2: 
-set $ws3 3: 3: 
-set $ws4 4: 4: 
-set $ws5 5: 5: 
-set $ws6 6: 6: 
-set $ws7 7: 7: 
-set $ws8 8: 8: 
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
 
 ##==================================================##
-#                         *** Workspace specific settings ***                     #
+#       *** Workspace specific settings ***         #
 ##=================================================##
 # Assign Workspaces:
 assign [class="Google-chrome"] $ws1
@@ -334,6 +336,7 @@ set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
+        strip_workspace_numbers no
 	i3bar_command i3bar 
 	status_command i3status
 	position top
@@ -346,8 +349,6 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
-
     colors {
         background $bg
         statusline #F9FAF9
